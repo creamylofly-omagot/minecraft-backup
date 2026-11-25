@@ -99,23 +99,19 @@ Files:
     `textures/...` references are deliberately left untouched so Bedrock can
     resolve them.
   - `tools/shorten_he_pack.py` documents/reproduces the transformation.
-- `Better-Glowing-Ores-v2.3.5.mcpack`
-  - Adds a default **Classic Glow (Simple/Fancy)** subpack. Ore pixels that have
-    an emissive MER value are written with alpha `252`, which Bedrock's classic
-    renderer treats as fullbright. This gives visible glow on low-end phones
-    without Vibrant Visuals.
-  - Internal subpack folder is shortened to `c` so the longest path is 76 chars.
+- `Better-Glowing-Ores-v2.3.6.mcpack`
+  - Classic glow is built into the main pack: ore pixels that have an emissive
+    MER value are written with alpha `252`, which Bedrock's classic renderer
+    treats as fullbright. This gives visible glow on low-end phones without
+    Vibrant Visuals.
+  - No subpack is required. Geyser-forced server packs do not expose subpack
+    selection to Bedrock clients, so the old `night_vision_on` subpack was
+    removed instead of relying on default-subpack behavior.
+  - PBR MER data is retained for devices using Vibrant Visuals.
+  - Longest internal path is 65 chars.
 
-If a Bedrock client still shows broken Human Era textures after this update,
-clear the cached server pack on that device and rejoin.
-
-Better Glowing Ores subpacks:
-
-- **Classic Glow (Simple/Fancy)** — default, memory tier 0. Uses alpha `252` on
-  emissive ore pixels so ores glow in Bedrock's classic renderer. Use this on
-  low-end phones with Simple or Fancy graphics.
-- **Night Vision ON** — memory tier 1. Vibrant Visuals lighting/colored-lighting
-  overrides. Do not use this on low-end phones.
+If a Bedrock client still shows broken Human Era textures or non-glowing ores
+after this update, clear the cached server pack on that device and rejoin.
 
 Low-end Bedrock phones do **not** need Vibrant Visuals. The classic glow is a
 self-lit texture effect; it does not make ores emit real block light into nearby

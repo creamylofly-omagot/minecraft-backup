@@ -59,7 +59,7 @@ Excluded from the public copy: real Geyser NXS token backups, Geyser
 |---|---|
 | `resource-packs/Human-Era-Vanilla-Glowing-Ores.zip` | Local source copy of the merged Java pack. Players download it from the GitHub Release URL. |
 | `plugins/Geyser-Spigot/packs/Human-Era-Villagers-Illagers-Bedrock.mcpack` | Bedrock Human Era pack. |
-| `plugins/Geyser-Spigot/packs/Better-Glowing-Ores-v2.3.5.mcpack` | Bedrock glowing ore pack with classic Simple/Fancy subpack. |
+| `plugins/Geyser-Spigot/packs/Better-Glowing-Ores-v2.3.6.mcpack` | Bedrock glowing ore pack with classic Simple/Fancy glow built into the main pack. |
 
 ## Ops scripts
 
