@@ -47,6 +47,7 @@ Important ones:
 | `SurvivalFarming` | Farming QoL plugin. |
 | `Chunky` | Pre-generates chunks. Overworld was pre-generated around spawn. |
 | `spark`, `LagFixer`, `SimpleHomeTpa`, `GSit`, `SkinsRestorer`, etc. | QoL/performance/support plugins. |
+| `plugins/SimpleHomeTpa/config.yml` | `/sethome` limit; currently `max-homes: 15`. |
 | `plugins/Geyser-Spigot/packs/` | Bedrock `.mcpack` files sent by Geyser. |
 
 Excluded from the public copy: real Geyser NXS token backups, Geyser
