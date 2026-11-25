@@ -14,7 +14,7 @@ Human Era Villagers & Illagers + Vanilla Glowing Ores
 Public download URL:
 
 ```text
-https://github.com/creamylofly-omagot/minecraft-backup/releases/download/v1.0.1/Human-Era-Vanilla-Glowing-Ores.zip
+https://github.com/creamylofly-omagot/minecraft-backup/releases/download/v1.0.2/Human-Era-Vanilla-Glowing-Ores.zip
 ```
 
 SHA1:
@@ -33,7 +33,7 @@ resource-packs/Human-Era-Vanilla-Glowing-Ores.zip
 
 ```properties
 require-resource-pack=true
-resource-pack=https\://github.com/creamylofly-omagot/minecraft-backup/releases/download/v1.0.1/Human-Era-Vanilla-Glowing-Ores.zip
+resource-pack=https\://github.com/creamylofly-omagot/minecraft-backup/releases/download/v1.0.2/Human-Era-Vanilla-Glowing-Ores.zip
 resource-pack-sha1=216575f6c190838ec7adc1003fdfa7f0df0b26e6
 resource-pack-prompt={"text":"Human Era Villagers & Illagers + Vanilla Glowing Ores resource pack is required."}
 ```
@@ -88,10 +88,14 @@ force-resource-packs: true
 Files:
 
 - `Human-Era-Villagers-Illagers-Bedrock.mcpack`
-  - Repacked as pack version `0.0.2` with shortened internal paths so no path is
+  - Repacked as pack version `0.0.3` with shortened internal paths so no path is
     80 characters or longer. This avoids Geyser's Bedrock path-length warnings.
   - Subpack folders were shortened (`WFC_A`, `D_A`, `WFC`, `Default`) while the
     player-facing subpack names were kept unchanged.
+  - Version `0.0.3` also fixes the black/purple unskilled villager: the bad
+    Java-style `textures/entity/villager2/professions/unskilled` reference now
+    points to the included generic villager texture. Vanilla-style `textures/...`
+    references are deliberately left untouched so Bedrock can resolve them.
   - `tools/shorten_he_pack.py` documents/reproduces the transformation.
 - `Better-Glowing-Ores-v2.3.4.mcpack`
 

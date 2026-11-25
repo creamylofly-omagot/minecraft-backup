@@ -24,7 +24,15 @@ REPLS = [
     ("iron_golem", "ig"),
 ]
 TEXT_EXT = (".json", ".txt", ".lang", ".md", ".yml", ".yaml", ".properties")
-PATH_RE = re.compile(r'(["\'])((?:assets|textures|subpacks)/[^"\'\r\n]*)\1')
+# Only rewrite paths that point at files we actually renamed. Vanilla-style
+# `textures/...` references must be left alone so Bedrock can still resolve them.
+PATH_RE = re.compile(r'(["\'])((?:assets|subpacks)/[^"\'\r\n]*)\1')
+# Fix a known bad Java-style unskilled villager texture reference by pointing it
+# at the generic villager texture that is actually included in this pack.
+CONTENT_FIXES = {
+    "textures/entity/villager2/professions/unskilled": "assets/minecraft/textures/e/villager/villager",
+}
+PACK_VERSION = [0, 0, 3]
 
 
 def shorten(s: str) -> str:
@@ -41,14 +49,16 @@ def rewrite_content(name: str, data: bytes) -> bytes:
     except UnicodeDecodeError:
         return data
     new_text = PATH_RE.sub(lambda m: m.group(1) + shorten(m.group(2)) + m.group(1), text)
+    for old, new in CONTENT_FIXES.items():
+        new_text = new_text.replace(old, new)
     if name == "manifest.json":
         manifest = json.loads(new_text)
         for sub in manifest.get("subpacks", []):
             if "folder_name" in sub:
                 sub["folder_name"] = shorten(sub["folder_name"])
-        manifest["header"]["version"] = [0, 0, 2]
+        manifest["header"]["version"] = PACK_VERSION
         for module in manifest.get("modules", []):
-            module["version"] = [0, 0, 2]
+            module["version"] = PACK_VERSION
         desc = manifest["header"].get("description", "")
         if "short paths" not in desc.lower():
             manifest["header"]["description"] = (desc + " Short paths for Bedrock compatibility.").strip()
