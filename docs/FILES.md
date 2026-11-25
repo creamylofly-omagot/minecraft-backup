@@ -69,6 +69,7 @@ Excluded from the public copy: real Geyser NXS token backups, Geyser
 | `sshx_watchdog.py` | Keeps an sshx session up and sends the link to Telegram. |
 | `backup.sh` | Nightly local archive script. |
 | `tools/rcon.py` | Small RCON client used by commands and scripts. |
+| `tools/shorten_he_pack.py` | Rebuilds the Human Era Bedrock mcpack with shorter internal paths and bumped pack version. |
 | `discord-bot/` | Discord bot code. Currently stopped. `config.json` excluded; `config.example.json` is sanitized. |
 
 ## Host files

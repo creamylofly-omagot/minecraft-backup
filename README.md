@@ -41,8 +41,8 @@ console/RCON, not by username, because Java names are not authenticated.
   `https://github.com/creamylofly-omagot/minecraft-backup/releases/download/v1.0.0/Human-Era-Vanilla-Glowing-Ores.zip`
   SHA1: `216575f6c190838ec7adc1003fdfa7f0df0b26e6`
 - Bedrock: two forced `.mcpack` files in `plugins/Geyser-Spigot/packs/`:
-  `Human-Era-Villagers-Illagers-Bedrock.mcpack` and
-  `Better-Glowing-Ores-v2.3.4.mcpack`
+  `Human-Era-Villagers-Illagers-Bedrock.mcpack` (repacked as v0.0.2 with short
+  internal paths) and `Better-Glowing-Ores-v2.3.4.mcpack`
 - Full details: [`docs/RESOURCE_PACKS.md`](docs/RESOURCE_PACKS.md)
 
 ## Documentation

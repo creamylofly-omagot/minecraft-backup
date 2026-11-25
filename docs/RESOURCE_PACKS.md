@@ -88,7 +88,15 @@ force-resource-packs: true
 Files:
 
 - `Human-Era-Villagers-Illagers-Bedrock.mcpack`
+  - Repacked as pack version `0.0.2` with shortened internal paths so no path is
+    80 characters or longer. This avoids Geyser's Bedrock path-length warnings.
+  - Subpack folders were shortened (`WFC_A`, `D_A`, `WFC`, `Default`) while the
+    player-facing subpack names were kept unchanged.
+  - `tools/shorten_he_pack.py` documents/reproduces the transformation.
 - `Better-Glowing-Ores-v2.3.4.mcpack`
+
+If a Bedrock client still shows broken Human Era textures after this update,
+clear the cached server pack on that device and rejoin.
 
 Better Glowing Ores subpacks:
 
