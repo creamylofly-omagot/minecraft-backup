@@ -35,7 +35,7 @@ resource-packs/Human-Era-Vanilla-Glowing-Ores.zip
 require-resource-pack=true
 resource-pack=https\://github.com/creamylofly-omagot/minecraft-backup/releases/download/v1.0.0/Human-Era-Vanilla-Glowing-Ores.zip
 resource-pack-sha1=216575f6c190838ec7adc1003fdfa7f0df0b26e6
-resource-pack-prompt=Human Era Villagers & Illagers + Vanilla Glowing Ores resource pack is required.
+resource-pack-prompt={"text":"Human Era Villagers & Illagers + Vanilla Glowing Ores resource pack is required."}
 ```
 
 The repository must stay **public**. Private GitHub Release assets require
