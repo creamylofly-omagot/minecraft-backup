@@ -52,7 +52,7 @@ Do not put the real password in shell history or in this repo.
 
 ```bash
 curl -fsSL -o /tmp/verify-pack.zip \
-  https://github.com/creamylofly-omagot/minecraft-backup/releases/download/v1.0.0/Human-Era-Vanilla-Glowing-Ores.zip
+  https://github.com/creamylofly-omagot/minecraft-backup/releases/download/v1.0.1/Human-Era-Vanilla-Glowing-Ores.zip
 sha1sum /tmp/verify-pack.zip
 ```
 
