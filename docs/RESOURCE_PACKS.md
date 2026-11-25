@@ -14,7 +14,7 @@ Human Era Villagers & Illagers + Vanilla Glowing Ores
 Public download URL:
 
 ```text
-https://github.com/creamylofly-omagot/minecraft-backup/releases/download/v1.0.3/Human-Era-Vanilla-Glowing-Ores.zip
+https://github.com/creamylofly-omagot/minecraft-backup/releases/download/v1.0.4/Human-Era-Vanilla-Glowing-Ores.zip
 ```
 
 SHA1:
@@ -33,7 +33,7 @@ resource-packs/Human-Era-Vanilla-Glowing-Ores.zip
 
 ```properties
 require-resource-pack=true
-resource-pack=https\://github.com/creamylofly-omagot/minecraft-backup/releases/download/v1.0.3/Human-Era-Vanilla-Glowing-Ores.zip
+resource-pack=https\://github.com/creamylofly-omagot/minecraft-backup/releases/download/v1.0.4/Human-Era-Vanilla-Glowing-Ores.zip
 resource-pack-sha1=216575f6c190838ec7adc1003fdfa7f0df0b26e6
 resource-pack-prompt={"text":"Human Era Villagers & Illagers + Vanilla Glowing Ores resource pack is required."}
 ```
@@ -99,21 +99,27 @@ Files:
     `textures/...` references are deliberately left untouched so Bedrock can
     resolve them.
   - `tools/shorten_he_pack.py` documents/reproduces the transformation.
-- `Better-Glowing-Ores-v2.3.4.mcpack`
+- `Better-Glowing-Ores-v2.3.5.mcpack`
+  - Adds a default **Classic Glow (Simple/Fancy)** subpack. Ore pixels that have
+    an emissive MER value are written with alpha `252`, which Bedrock's classic
+    renderer treats as fullbright. This gives visible glow on low-end phones
+    without Vibrant Visuals.
+  - Internal subpack folder is shortened to `c` so the longest path is 76 chars.
 
 If a Bedrock client still shows broken Human Era textures after this update,
 clear the cached server pack on that device and rejoin.
 
 Better Glowing Ores subpacks:
 
-- **Night Vision OFF** — glowing/bright ores with normal cave darkness; use this
-  for low-end phones.
-- **Night Vision ON** — brighter caves and colored lighting; better on devices
-  that support Vibrant Visuals.
+- **Classic Glow (Simple/Fancy)** — default, memory tier 0. Uses alpha `252` on
+  emissive ore pixels so ores glow in Bedrock's classic renderer. Use this on
+  low-end phones with Simple or Fancy graphics.
+- **Night Vision ON** — memory tier 1. Vibrant Visuals lighting/colored-lighting
+  overrides. Do not use this on low-end phones.
 
-Low-end Bedrock phones do **not** need Vibrant Visuals to use the Night Vision
-OFF subpack. True emissive light-in-dark behavior still requires Vibrant Visuals
-on devices that support it.
+Low-end Bedrock phones do **not** need Vibrant Visuals. The classic glow is a
+self-lit texture effect; it does not make ores emit real block light into nearby
+blocks.
 
 The Bedrock `.mcpack` files are also attached to the GitHub Release for backup,
 but Geyser still reads them from the local `packs/` folder on the server.
