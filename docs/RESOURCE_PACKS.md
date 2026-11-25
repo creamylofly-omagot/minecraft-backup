@@ -99,23 +99,48 @@ Files:
     `textures/...` references are deliberately left untouched so Bedrock can
     resolve them.
   - `tools/shorten_he_pack.py` documents/reproduces the transformation.
-- `Better-Glowing-Ores-v2.3.6.mcpack`
-  - Classic glow is built into the main pack: ore pixels that have an emissive
-    MER value are written with alpha `252`, which Bedrock's classic renderer
-    treats as fullbright. This gives visible glow on low-end phones without
-    Vibrant Visuals.
-  - No subpack is required. Geyser-forced server packs do not expose subpack
-    selection to Bedrock clients, so the old `night_vision_on` subpack was
-    removed instead of relying on default-subpack behavior.
-  - PBR MER data is retained for devices using Vibrant Visuals.
+- `Better-Glowing-Ores-v2.4.0-RealLight.mcpack`
+  - Ore textures are unchanged from v2.3.6, including PBR MER data for devices
+    using Vibrant Visuals.
+  - The manifest was bumped to version `2.4.0` so Bedrock clients fetch the new
+    pack after the renderer change.
   - Longest internal path is 65 chars.
+
+### Geyser custom block mappings
+
+Texture-only alpha tricks do **not** work on vanilla Bedrock ore blocks with
+Simple/Fancy graphics. The visible dark glow now comes from Geyser custom block
+mappings, which register the ore block states as Bedrock custom blocks with a
+real `minecraft:light_emission` component. This was chosen deliberately: the
+ores now glow in the dark on low-end phones **and emit real block light**.
+
+The mapping file is:
+
+```text
+plugins/Geyser-Spigot/custom_mappings/human_era_glowing_ores.json
+```
+
+Requirements:
+
+- `gameplay.enable-custom-content: true` in `plugins/Geyser-Spigot/config.yml`
+- Geyser restart after changing the mapping file
+- The `.mcpack` stays in `plugins/Geyser-Spigot/packs/` with
+  `force-resource-packs: true`
+
+The mapping covers coal, copper, diamond, emerald, gold, iron, lapis, nether
+gold, nether quartz, redstone/deepslate redstone, and ancient debris. Ordinary
+ores use light level `6`; activated redstone ore uses `9`. Mining, drops, and
+block behavior remain Java-side; only Bedrock's visual palette and light value
+are overridden.
 
 If a Bedrock client still shows broken Human Era textures or non-glowing ores
 after this update, clear the cached server pack on that device and rejoin.
 
-Low-end Bedrock phones do **not** need Vibrant Visuals. The classic glow is a
-self-lit texture effect; it does not make ores emit real block light into nearby
-blocks.
+Low-end Bedrock phones do **not** need Vibrant Visuals, but the ores now produce
+real light around them. This is a deliberate tradeoff: there is no vanilla
+resource-pack-only way to make vanilla Bedrock ore materials self-lit without
+either Vibrant Visuals/PBR, a shader loader, or real block light.
 
-The Bedrock `.mcpack` files are also attached to the GitHub Release for backup,
-but Geyser still reads them from the local `packs/` folder on the server.
+The Bedrock `.mcpack` files and the custom mapping JSON are also attached to the
+GitHub Release for backup, but Geyser still reads them from the local Geyser
+data folder on the server.

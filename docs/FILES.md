@@ -59,7 +59,8 @@ Excluded from the public copy: real Geyser NXS token backups, Geyser
 |---|---|
 | `resource-packs/Human-Era-Vanilla-Glowing-Ores.zip` | Local source copy of the merged Java pack. Players download it from the GitHub Release URL. |
 | `plugins/Geyser-Spigot/packs/Human-Era-Villagers-Illagers-Bedrock.mcpack` | Bedrock Human Era pack. |
-| `plugins/Geyser-Spigot/packs/Better-Glowing-Ores-v2.3.6.mcpack` | Bedrock glowing ore pack with classic Simple/Fancy glow built into the main pack. |
+| `plugins/Geyser-Spigot/packs/Better-Glowing-Ores-v2.4.0-RealLight.mcpack` | Bedrock glowing ore textures. The dark glow comes from the Geyser custom block mapping below. |
+| `plugins/Geyser-Spigot/custom_mappings/human_era_glowing_ores.json` | Registers vanilla ore block states as Bedrock custom blocks with real `light_emission` so they glow on Simple/Fancy. |
 
 ## Ops scripts
 

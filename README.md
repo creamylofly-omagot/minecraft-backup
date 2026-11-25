@@ -43,7 +43,10 @@ console/RCON, not by username, because Java names are not authenticated.
 - Bedrock: two forced `.mcpack` files in `plugins/Geyser-Spigot/packs/`:
   `Human-Era-Villagers-Illagers-Bedrock.mcpack` (repacked as v0.0.4 with short
   internal paths and fixed texture references) and
-  `Better-Glowing-Ores-v2.3.6.mcpack` (classic glow built in; works on Simple/Fancy)
+  `Better-Glowing-Ores-v2.4.0-RealLight.mcpack`
+- Bedrock ore glow uses Geyser custom mappings in
+  `plugins/Geyser-Spigot/custom_mappings/human_era_glowing_ores.json`. It works
+  on Simple/Fancy by emitting real block light; it is not a texture-only glow.
 - Full details: [`docs/RESOURCE_PACKS.md`](docs/RESOURCE_PACKS.md)
 
 ## Documentation

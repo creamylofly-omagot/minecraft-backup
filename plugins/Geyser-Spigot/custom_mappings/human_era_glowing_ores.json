@@ -1,0 +1,415 @@
+{
+  "format_version": 1,
+  "blocks": {
+    "minecraft:coal_ore": {
+      "name": "human_era_glow_coal_ore",
+      "display_name": "Human Era Glowing Coal Ore",
+      "geometry": "minecraft:geometry.full_block",
+      "material_instances": {
+        "*": {
+          "texture": "coal_ore",
+          "render_method": "opaque",
+          "face_dimming": false,
+          "ambient_occlusion": false,
+          "isotropic": false
+        }
+      },
+      "tags": [
+        "ore"
+      ],
+      "light_emission": 6,
+      "light_dampening": 15,
+      "included_in_creative_inventory": false
+    },
+    "minecraft:deepslate_coal_ore": {
+      "name": "human_era_glow_deepslate_coal_ore",
+      "display_name": "Human Era Glowing Deepslate Coal Ore",
+      "geometry": "minecraft:geometry.full_block",
+      "material_instances": {
+        "*": {
+          "texture": "deepslate_coal_ore",
+          "render_method": "opaque",
+          "face_dimming": false,
+          "ambient_occlusion": false,
+          "isotropic": false
+        }
+      },
+      "tags": [
+        "ore"
+      ],
+      "light_emission": 6,
+      "light_dampening": 15,
+      "included_in_creative_inventory": false
+    },
+    "minecraft:copper_ore": {
+      "name": "human_era_glow_copper_ore",
+      "display_name": "Human Era Glowing Copper Ore",
+      "geometry": "minecraft:geometry.full_block",
+      "material_instances": {
+        "*": {
+          "texture": "copper_ore",
+          "render_method": "opaque",
+          "face_dimming": false,
+          "ambient_occlusion": false,
+          "isotropic": false
+        }
+      },
+      "tags": [
+        "ore"
+      ],
+      "light_emission": 6,
+      "light_dampening": 15,
+      "included_in_creative_inventory": false
+    },
+    "minecraft:deepslate_copper_ore": {
+      "name": "human_era_glow_deepslate_copper_ore",
+      "display_name": "Human Era Glowing Deepslate Copper Ore",
+      "geometry": "minecraft:geometry.full_block",
+      "material_instances": {
+        "*": {
+          "texture": "deepslate_copper_ore",
+          "render_method": "opaque",
+          "face_dimming": false,
+          "ambient_occlusion": false,
+          "isotropic": false
+        }
+      },
+      "tags": [
+        "ore"
+      ],
+      "light_emission": 6,
+      "light_dampening": 15,
+      "included_in_creative_inventory": false
+    },
+    "minecraft:diamond_ore": {
+      "name": "human_era_glow_diamond_ore",
+      "display_name": "Human Era Glowing Diamond Ore",
+      "geometry": "minecraft:geometry.full_block",
+      "material_instances": {
+        "*": {
+          "texture": "diamond_ore",
+          "render_method": "opaque",
+          "face_dimming": false,
+          "ambient_occlusion": false,
+          "isotropic": false
+        }
+      },
+      "tags": [
+        "ore"
+      ],
+      "light_emission": 6,
+      "light_dampening": 15,
+      "included_in_creative_inventory": false
+    },
+    "minecraft:deepslate_diamond_ore": {
+      "name": "human_era_glow_deepslate_diamond_ore",
+      "display_name": "Human Era Glowing Deepslate Diamond Ore",
+      "geometry": "minecraft:geometry.full_block",
+      "material_instances": {
+        "*": {
+          "texture": "deepslate_diamond_ore",
+          "render_method": "opaque",
+          "face_dimming": false,
+          "ambient_occlusion": false,
+          "isotropic": false
+        }
+      },
+      "tags": [
+        "ore"
+      ],
+      "light_emission": 6,
+      "light_dampening": 15,
+      "included_in_creative_inventory": false
+    },
+    "minecraft:emerald_ore": {
+      "name": "human_era_glow_emerald_ore",
+      "display_name": "Human Era Glowing Emerald Ore",
+      "geometry": "minecraft:geometry.full_block",
+      "material_instances": {
+        "*": {
+          "texture": "emerald_ore",
+          "render_method": "opaque",
+          "face_dimming": false,
+          "ambient_occlusion": false,
+          "isotropic": false
+        }
+      },
+      "tags": [
+        "ore"
+      ],
+      "light_emission": 6,
+      "light_dampening": 15,
+      "included_in_creative_inventory": false
+    },
+    "minecraft:deepslate_emerald_ore": {
+      "name": "human_era_glow_deepslate_emerald_ore",
+      "display_name": "Human Era Glowing Deepslate Emerald Ore",
+      "geometry": "minecraft:geometry.full_block",
+      "material_instances": {
+        "*": {
+          "texture": "deepslate_emerald_ore",
+          "render_method": "opaque",
+          "face_dimming": false,
+          "ambient_occlusion": false,
+          "isotropic": false
+        }
+      },
+      "tags": [
+        "ore"
+      ],
+      "light_emission": 6,
+      "light_dampening": 15,
+      "included_in_creative_inventory": false
+    },
+    "minecraft:gold_ore": {
+      "name": "human_era_glow_gold_ore",
+      "display_name": "Human Era Glowing Gold Ore",
+      "geometry": "minecraft:geometry.full_block",
+      "material_instances": {
+        "*": {
+          "texture": "gold_ore",
+          "render_method": "opaque",
+          "face_dimming": false,
+          "ambient_occlusion": false,
+          "isotropic": false
+        }
+      },
+      "tags": [
+        "ore"
+      ],
+      "light_emission": 6,
+      "light_dampening": 15,
+      "included_in_creative_inventory": false
+    },
+    "minecraft:deepslate_gold_ore": {
+      "name": "human_era_glow_deepslate_gold_ore",
+      "display_name": "Human Era Glowing Deepslate Gold Ore",
+      "geometry": "minecraft:geometry.full_block",
+      "material_instances": {
+        "*": {
+          "texture": "deepslate_gold_ore",
+          "render_method": "opaque",
+          "face_dimming": false,
+          "ambient_occlusion": false,
+          "isotropic": false
+        }
+      },
+      "tags": [
+        "ore"
+      ],
+      "light_emission": 6,
+      "light_dampening": 15,
+      "included_in_creative_inventory": false
+    },
+    "minecraft:iron_ore": {
+      "name": "human_era_glow_iron_ore",
+      "display_name": "Human Era Glowing Iron Ore",
+      "geometry": "minecraft:geometry.full_block",
+      "material_instances": {
+        "*": {
+          "texture": "iron_ore",
+          "render_method": "opaque",
+          "face_dimming": false,
+          "ambient_occlusion": false,
+          "isotropic": false
+        }
+      },
+      "tags": [
+        "ore"
+      ],
+      "light_emission": 6,
+      "light_dampening": 15,
+      "included_in_creative_inventory": false
+    },
+    "minecraft:deepslate_iron_ore": {
+      "name": "human_era_glow_deepslate_iron_ore",
+      "display_name": "Human Era Glowing Deepslate Iron Ore",
+      "geometry": "minecraft:geometry.full_block",
+      "material_instances": {
+        "*": {
+          "texture": "deepslate_iron_ore",
+          "render_method": "opaque",
+          "face_dimming": false,
+          "ambient_occlusion": false,
+          "isotropic": false
+        }
+      },
+      "tags": [
+        "ore"
+      ],
+      "light_emission": 6,
+      "light_dampening": 15,
+      "included_in_creative_inventory": false
+    },
+    "minecraft:lapis_ore": {
+      "name": "human_era_glow_lapis_ore",
+      "display_name": "Human Era Glowing Lapis Ore",
+      "geometry": "minecraft:geometry.full_block",
+      "material_instances": {
+        "*": {
+          "texture": "lapis_ore",
+          "render_method": "opaque",
+          "face_dimming": false,
+          "ambient_occlusion": false,
+          "isotropic": false
+        }
+      },
+      "tags": [
+        "ore"
+      ],
+      "light_emission": 6,
+      "light_dampening": 15,
+      "included_in_creative_inventory": false
+    },
+    "minecraft:deepslate_lapis_ore": {
+      "name": "human_era_glow_deepslate_lapis_ore",
+      "display_name": "Human Era Glowing Deepslate Lapis Ore",
+      "geometry": "minecraft:geometry.full_block",
+      "material_instances": {
+        "*": {
+          "texture": "deepslate_lapis_ore",
+          "render_method": "opaque",
+          "face_dimming": false,
+          "ambient_occlusion": false,
+          "isotropic": false
+        }
+      },
+      "tags": [
+        "ore"
+      ],
+      "light_emission": 6,
+      "light_dampening": 15,
+      "included_in_creative_inventory": false
+    },
+    "minecraft:nether_gold_ore": {
+      "name": "human_era_glow_nether_gold_ore",
+      "display_name": "Human Era Glowing Nether Gold Ore",
+      "geometry": "minecraft:geometry.full_block",
+      "material_instances": {
+        "*": {
+          "texture": "nether_gold_ore",
+          "render_method": "opaque",
+          "face_dimming": false,
+          "ambient_occlusion": false,
+          "isotropic": false
+        }
+      },
+      "tags": [
+        "ore"
+      ],
+      "light_emission": 6,
+      "light_dampening": 15,
+      "included_in_creative_inventory": false
+    },
+    "minecraft:nether_quartz_ore": {
+      "name": "human_era_glow_nether_quartz_ore",
+      "display_name": "Human Era Glowing Nether Quartz Ore",
+      "geometry": "minecraft:geometry.full_block",
+      "material_instances": {
+        "*": {
+          "texture": "quartz_ore",
+          "render_method": "opaque",
+          "face_dimming": false,
+          "ambient_occlusion": false,
+          "isotropic": false
+        }
+      },
+      "tags": [
+        "ore"
+      ],
+      "light_emission": 6,
+      "light_dampening": 15,
+      "included_in_creative_inventory": false
+    },
+    "minecraft:redstone_ore": {
+      "name": "human_era_glow_redstone_ore",
+      "display_name": "Human Era Glowing Redstone Ore",
+      "geometry": "minecraft:geometry.full_block",
+      "material_instances": {
+        "*": {
+          "texture": "redstone_ore",
+          "render_method": "opaque",
+          "face_dimming": false,
+          "ambient_occlusion": false,
+          "isotropic": false
+        }
+      },
+      "tags": [
+        "ore"
+      ],
+      "light_emission": 6,
+      "light_dampening": 15,
+      "included_in_creative_inventory": false,
+      "state_overrides": {
+        "lit=false": {
+          "light_emission": 6
+        },
+        "lit=true": {
+          "light_emission": 9
+        }
+      }
+    },
+    "minecraft:deepslate_redstone_ore": {
+      "name": "human_era_glow_deepslate_redstone_ore",
+      "display_name": "Human Era Glowing Deepslate Redstone Ore",
+      "geometry": "minecraft:geometry.full_block",
+      "material_instances": {
+        "*": {
+          "texture": "deepslate_redstone_ore",
+          "render_method": "opaque",
+          "face_dimming": false,
+          "ambient_occlusion": false,
+          "isotropic": false
+        }
+      },
+      "tags": [
+        "ore"
+      ],
+      "light_emission": 6,
+      "light_dampening": 15,
+      "included_in_creative_inventory": false,
+      "state_overrides": {
+        "lit=false": {
+          "light_emission": 6
+        },
+        "lit=true": {
+          "light_emission": 9
+        }
+      }
+    },
+    "minecraft:ancient_debris": {
+      "name": "human_era_glow_ancient_debris",
+      "display_name": "Human Era Glowing Ancient Debris",
+      "geometry": "minecraft:geometry.full_block",
+      "material_instances": {
+        "*": {
+          "texture": "ancient_debris_side",
+          "render_method": "opaque",
+          "face_dimming": false,
+          "ambient_occlusion": false,
+          "isotropic": false
+        },
+        "up": {
+          "texture": "ancient_debris_top",
+          "render_method": "opaque",
+          "face_dimming": false,
+          "ambient_occlusion": false,
+          "isotropic": false
+        },
+        "down": {
+          "texture": "ancient_debris_top",
+          "render_method": "opaque",
+          "face_dimming": false,
+          "ambient_occlusion": false,
+          "isotropic": false
+        }
+      },
+      "tags": [
+        "ore"
+      ],
+      "light_emission": 6,
+      "light_dampening": 15,
+      "included_in_creative_inventory": false
+    }
+  }
+}
