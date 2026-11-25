@@ -1,0 +1,121 @@
+# ╔══════════════════════════════════════════════════════════════╗
+# ║          Advanced TreeCapitator  —  config.yml              ║
+# ║          Paper 26.1 – 26.3+   |  Java 25+                   ║
+# ╚══════════════════════════════════════════════════════════════╝
+#
+# After editing, apply changes with:  /atc reload
+#
+# Upgrading from an older version? Keys that are missing from your file fall back
+# to the defaults of this version automatically — you do not need to regenerate it.
+
+# ── Activation ──────────────────────────────────────────────────
+enabled: true
+require-axe: true        # Player must hold an axe (see "Tools" below)
+require-sneak: true      # Player must be sneaking (Shift) to trigger felling
+
+# ── Tree detection ──────────────────────────────────────────────
+require-leaves: true     # At least 1 adjacent NATURAL leaf block required.
+                         # Prevents activation on player-built log walls & cabins.
+                         # Leaves placed by players (persistent leaves) do not count.
+                         # Automatically bypassed for Nether stems and Bamboo.
+
+max-blocks: 100          # Maximum logs broken per fell. Trees larger than this
+                         # are partially felled; remaining logs need another swing.
+
+# Maximum horizontal (X+Z) Manhattan distance BFS is allowed to travel from
+# the origin block. Increase for modpack trees with unusually wide canopies;
+# decrease to better isolate densely planted trees. Default: 8.
+max-horizontal-distance: 8
+
+# Maximum 3-D Manhattan distance (X+Y+Z) BFS is allowed to travel from the
+# origin block. Increase for tall trees — Jungle trees can reach 30+ blocks.
+# Default: 50. Range: 10 – 200.
+max-distance: 50
+
+# ── Timing ──────────────────────────────────────────────────────
+cooldown-ms: 200         # Per-player cooldown between fells in milliseconds.
+                         # Prevents accidental double-triggers. Min: 0, Max: 60000.
+
+# How many blocks (logs + leaves) are broken per server tick while felling.
+# Big trees are spread over several ticks so they never cause a lag spike.
+# Lower = smoother on busy servers, higher = tree falls "instantly". Range: 1 – 1000.
+# Added in v1.5.3.
+blocks-per-tick: 50
+
+# ── Leaves ──────────────────────────────────────────────────────
+break-leaves: false      # Also break NATURAL leaf blocks adjacent to the felled logs.
+                         # Leaves placed by players are never touched (v1.5.3).
+
+# ── Durability ──────────────────────────────────────────────────
+damage-axe: true         # Apply durability loss proportional to blocks broken.
+                         # Unbreaking is rolled per hit like vanilla. Unbreakable tools,
+                         # tools with a custom max durability and Creative mode are
+                         # handled correctly (v1.5.3).
+
+damage-multiplier: 1.0   # Durability cost per log block. Range: 0.1 – 10.0.
+                         # 0.5 = half a durability point per log on average.
+
+leaf-durability-ratio: 10 # How many leaf blocks count as 1 durability hit.
+                           # Only relevant when break-leaves: true. Range: 1 – 1000.
+
+# ── Visual & audio effects ──────────────────────────────────────
+particle-effect: true    # Spawn block-crack particles at the felled tree base.
+sound-effect: true       # Play the log's own break sound at the tree's base
+                         # (cherry, pale oak, poplar, nether stems... each sound right).
+
+# ── World restrictions ───────────────────────────────────────────
+# Leave both lists empty to allow tree felling in every world.
+# Entries can be a world name ("world") or a world key ("minecraft:overworld").
+#
+# whitelist-worlds takes precedence: if non-empty, only those worlds are allowed.
+# blacklist-worlds is checked only when whitelist-worlds is empty.
+#
+# Example — allow only survival worlds:
+#   whitelist-worlds:
+#     - world
+#     - world_nether
+#
+# Example — block a creative world:
+#   blacklist-worlds:
+#     - creative_world
+whitelist-worlds: []
+blacklist-worlds: []
+
+# ── Log types ───────────────────────────────────────────────────
+# The final set of fellable blocks is:  log-tags  +  log-types  -  log-exclude
+#
+# log-tags: vanilla BLOCK tags (without the #). overworld_natural_logs contains every
+# natural overworld log — oak ... pale oak AND poplar (Minecraft 26.3) — and future wood
+# types are picked up automatically after a Minecraft update. Datapack tags work too
+# ("namespace:tag").
+log-tags:
+  - overworld_natural_logs
+
+# log-types: single Material names (case-insensitive) added on top of the tags.
+log-types:
+  - CRIMSON_STEM       # Nether — require-leaves bypass applies
+  - WARPED_STEM        # Nether — require-leaves bypass applies
+  - BAMBOO_BLOCK       # require-leaves bypass applies
+
+# log-exclude: Material names to remove again, e.g. to keep one wood type unfellable.
+#   log-exclude:
+#     - CHERRY_LOG
+log-exclude: []
+
+# ── Tools ───────────────────────────────────────────────────────
+# The final set of accepted tools is:  tool-tags  +  tool-whitelist  -  tool-exclude
+#
+# tool-tags: vanilla ITEM tags (without the #). "axes" = every axe, including the
+# Copper Axe and axes added by future updates.
+tool-tags:
+  - axes
+
+# tool-whitelist: single Material names added on top of the tags.
+tool-whitelist: []
+
+# tool-exclude: Material names to remove again. Example — wooden and stone axes cannot fell:
+#   tool-exclude:
+#     - WOODEN_AXE
+#     - STONE_AXE
+# (To allow ONLY specific axes: set tool-tags: [] and list them in tool-whitelist.)
+tool-exclude: []

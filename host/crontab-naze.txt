@@ -1,0 +1,2 @@
+0 4 * * * /home/naze/minecraft-public/backup.sh >> /home/naze/minecraft-public/logs/backup.log 2>&1
+@reboot /usr/bin/tmux new-session -d -s chest-audit 'cd /home/naze/minecraft-public && while true; do /usr/bin/python3 /home/naze/minecraft-public/chest_audit_monitor.py --interval 3 --log-file /home/naze/minecraft-public/logs/chest-audit.log; sleep 5; done'

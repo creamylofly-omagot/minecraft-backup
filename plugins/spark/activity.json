@@ -1,0 +1,26 @@
+[
+  {
+    "user": {
+      "type": "other",
+      "name": "Rcon"
+    },
+    "time": 1794914736747,
+    "type": "Health report",
+    "data": {
+      "type": "url",
+      "value": "https://spark.lucko.me/3AQT1lISZg"
+    }
+  },
+  {
+    "user": {
+      "type": "other",
+      "name": "Rcon"
+    },
+    "time": 1794582785923,
+    "type": "Health report",
+    "data": {
+      "type": "url",
+      "value": "https://spark.lucko.me/S0NxBeIy1c"
+    }
+  }
+]

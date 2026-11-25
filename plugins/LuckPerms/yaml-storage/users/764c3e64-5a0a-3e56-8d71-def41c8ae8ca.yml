@@ -1,0 +1,18 @@
+uuid: 764c3e64-5a0a-3e56-8d71-def41c8ae8ca
+name: 'null'
+primary-group: default
+permissions:
+- imageframe.clone
+- imageframe.create
+- imageframe.create.animated
+- imageframe.delete
+- imageframe.get
+- imageframe.marker
+- imageframe.overlay
+- imageframe.playback
+- imageframe.refresh
+- imageframe.rename
+- imageframe.select
+- imageframe.setaccess
+parents:
+- default

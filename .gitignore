@@ -1,0 +1,21 @@
+# Regenerated/temporary
+.fast/
+cache/
+logs/
+versions/
+libraries/
+__pycache__/
+*.pyc
+
+# Secrets / private runtime files
+discord-bot/.venv/
+discord-bot/config.json
+server.properties.bak-*
+plugins/Geyser-Spigot/config.yml.*
+plugins/Geyser-Spigot/nethernet/
+plugins/Geyser-Spigot/nethernet.bak-*/
+plugins/Geyser-Spigot/cache/
+secrets/
+*.env
+!*.example.env
+host/playit.toml

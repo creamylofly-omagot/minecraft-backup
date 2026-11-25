@@ -1,0 +1,93 @@
+###########################
+#       DoorsReloaded     #
+###########################
+
+config-version: 2
+
+# Original author: mfnalex / JEFF Media GbR
+# Community continuation by Semarina.
+
+###########################
+#       Double doors      #
+###########################
+
+# When true, players can open-close double doors with right-click.
+# They need the permission "doorsreloaded.doubledoors" which is given to all players by default
+allow-doubledoors: true
+
+# Also open/close both doors when one door gets powered by redstone.
+# Note: if both doors are powered and only signal gets cut, only one door will close (like in vanilla)
+check-for-redstone: true
+
+###########################
+#        Iron Doors       #
+###########################
+
+# When true, players can open-close iron doors with right-click.
+# They need the permission "doorsreloaded.irondoors".
+allow-opening-irondoors-with-hands: false
+
+# When true, players can open-close iron trapdoors with right-click.
+# They need the permission "doorsreloaded.irondoors".
+allow-opening-irontrapdoors-with-hands: false
+
+# Automatically closes iron doors and trapdoors after the given amount of seconds (0 to disable).
+autoclose: 0
+
+###########################
+#         Knocking        #
+###########################
+
+# When true, players can knock on doors using left-click.
+# This only works for players in survival and adventure mode.
+# They need the permission "doorsreloaded.knock" which is given to all players by default
+allow-knocking-doors: true
+
+# When true, players can knock to trapdoors like normal doors.
+# Players still need the permission "doorsreloaded.knock" which is given to all players by default
+# If allow-knocking-doors is false, this feature won't work
+allow-knocking-trapdoors: false
+
+# When true, players can knock to fence gates like normal doors.
+# Players still need the permission "doorsreloaded.knock" which is given to all players by default
+# If allow-knocking-doors is false, this feature won't work
+allow-knocking-gates: false
+
+# When true, players can only knock when their hand is empty.
+knocking-requires-empty-hand: false
+
+# When true, players can only knock while sneaking
+knocking-requires-shift: false
+
+###########################
+#     Knocking Sounds     #
+###########################
+
+# Settings for the knocking sound
+# See here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html
+sound-knock-door-iron: "minecraft:entity.zombie.attack_iron_door"
+sound-knock-door-copper: "minecraft:entity.zombie.attack_iron_door"
+sound-knock-door-wood: "minecraft:item.shield.block"
+
+sound-knock-trapdoor-iron: "minecraft:entity.zombie.attack_iron_door"
+sound-knock-trapdoor-copper: "minecraft:entity.zombie.attack_iron_door"
+sound-knock-trapdoor-wood: "minecraft:item.shield.block"
+
+sound-knock-gate-iron: "minecraft:entity.zombie.attack_iron_door"
+sound-knock-gate-copper: "minecraft:entity.zombie.attack_iron_door"
+sound-knock-gate-wood: "minecraft:item.shield.block"
+# A volume of 1.0 means 16 blocks, 2.0 means 32 blocks, etc.
+sound-knock-volume: 1.0
+sound-knock-pitch: 1.0
+# See here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/SoundCategory.html
+sound-knock-category: BLOCKS
+
+###########################
+#           Misc          #
+###########################
+
+# Debug mode
+debug: false
+
+# Check for updates on Modrinth
+check-for-updates: true

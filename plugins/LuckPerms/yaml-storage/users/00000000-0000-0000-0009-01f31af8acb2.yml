@@ -1,0 +1,18 @@
+uuid: 00000000-0000-0000-0009-01f31af8acb2
+name: .yusufgeming9557
+primary-group: default
+permissions:
+- imageframe.clone
+- imageframe.create
+- imageframe.create.animated
+- imageframe.delete
+- imageframe.get
+- imageframe.marker
+- imageframe.overlay
+- imageframe.playback
+- imageframe.refresh
+- imageframe.rename
+- imageframe.select
+- imageframe.setaccess
+parents:
+- default

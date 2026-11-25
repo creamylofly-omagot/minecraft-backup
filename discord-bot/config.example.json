@@ -1,0 +1,34 @@
+{
+  "token": "PUT_YOUR_DISCORD_BOT_TOKEN_HERE",
+  "command_prefix": "!",
+
+  "guild_id": 0,
+  "chest_channel_id": 0,
+  "alert_channel_id": 0,
+
+  "admin_user_ids": [123456789012345678],
+  "admin_role_ids": [],
+
+  "rcon_path": "/home/naze/rcon.py",
+  "rcon_password": "REPLACE_WITH_RCON_PASSWORD",
+  "rcon_python": "/usr/bin/python3",
+
+  "minecraft_service": "minecraft-public",
+  "server_dir": "/home/naze/minecraft-public",
+  "coreprotect_db": "/home/naze/minecraft-public/plugins/CoreProtect/database.db",
+  "state_file": "/home/naze/minecraft-public/discord-bot/state.json",
+
+  "storage_paths": [
+    "/home/naze/minecraft-public",
+    "/home/naze/minecraft-public/world",
+    "/home/naze/minecraft-public/world_nether",
+    "/home/naze/minecraft-public/world_the_end",
+    "/home/naze/minecraft-public/plugins",
+    "/home/naze/minecraft-public/logs"
+  ],
+  "storage_warn_percent": 90,
+  "storage_check_minutes": 30,
+
+  "chest_poll_seconds": 5,
+  "status_poll_seconds": 60
+}

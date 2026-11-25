@@ -1,0 +1,18 @@
+uuid: 00000000-0000-0000-0009-01f1bd3b1db1
+name: .DapaRiskie109
+primary-group: default
+permissions:
+- imageframe.clone
+- imageframe.create
+- imageframe.create.animated
+- imageframe.delete
+- imageframe.get
+- imageframe.marker
+- imageframe.overlay
+- imageframe.playback
+- imageframe.refresh
+- imageframe.rename
+- imageframe.select
+- imageframe.setaccess
+parents:
+- default

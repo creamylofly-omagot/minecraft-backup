@@ -1,0 +1,6 @@
+enable-inventory-fix: true
+enable-movement-fix: true
+bedrock-extra-reach: 1.5
+spawn-protection:
+  enabled: true
+  max-duration-seconds: 30

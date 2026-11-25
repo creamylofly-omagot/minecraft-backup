@@ -1,0 +1,182 @@
+# ─────────────────────────────────────────────
+#   CaveMiner  -  Configuration
+#   Plugin by LucasTHCR
+# ─────────────────────────────────────────────
+
+# Master switch - set false to completely disable vein mining
+enabled: true
+
+# Disable vein mining for players in Creative mode
+# true  → Creative players mine blocks one at a time (vanilla behaviour)
+# false → Creative players also trigger vein mining
+disable-in-creative: true
+
+# Maximum number of blocks broken in a single vein event.
+# Prevents lag on huge ore veins. Recommended: 16-128
+max-chain-size: 64
+
+# Worlds where vein mining never triggers (creative worlds, plot worlds, events)
+disabled-worlds: []
+
+# Hunger cost of every extra block in a vein. Mining a block by hand costs 0.005,
+# so 0.005 makes a vein exactly as tiring as mining it block by block.
+# 0 = veins cost no extra hunger (behaviour before 1.3.0).
+hunger:
+  exhaustion-per-block: 0.0
+
+# Treat an ore and its deepslate variant as one vein, so a vein crossing the
+# deepslate border is not cut in half.
+merge-deepslate-variants: true
+
+# ─── Activation Mode ─────────────────────────────────────────────────────────
+sneak:
+  # If false, vein mining is ALWAYS active when holding the right tool.
+  # If true, the sneak key controls activation (see sneak-activates below).
+  required: true
+
+  # Only relevant when required: true
+  #   true  → Player must SNEAK to activate vein mining
+  #   false → Vein mining is active by default; SNEAK disables it
+  sneak-activates: true
+
+# ─── Drops ───────────────────────────────────────────────────────────────────
+drops:
+  # true  → All drops from the vein are spawned at the FIRST broken block
+  # false → Each block drops items at its own location (vanilla behaviour)
+  all-at-source-block: true
+
+# ─── Particles ───────────────────────────────────────────────────────────────
+particles:
+  # Block-break particles for every block of the chain
+  enabled: true
+
+# ─── Sound ───────────────────────────────────────────────────────────────────
+sound:
+  # Either the registry key (block.stone.break) or the enum name
+  # (BLOCK_STONE_BREAK) - both are accepted.
+  name: "block.stone.break"
+  volume: 1.0
+  # Higher pitch = faster/higher sound
+  pitch: 1.2
+
+# ─── Ore → Allowed Tools Map ─────────────────────────────────────────────────
+# Format:
+#   MATERIAL_NAME:
+#     - TOOL_MATERIAL_1
+#     - TOOL_MATERIAL_2
+#
+# Leaving the list empty means ANY tool (or fist) can trigger vein mining.
+# Only ores listed here will trigger vein mining at all.
+#
+# Full material list: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+
+ore-tool-map:
+  # ── Overworld ores ──────────────────────────────────────
+  COAL_ORE:
+    - WOODEN_PICKAXE
+    - STONE_PICKAXE
+    - IRON_PICKAXE
+    - GOLDEN_PICKAXE
+    - DIAMOND_PICKAXE
+    - NETHERITE_PICKAXE
+  DEEPSLATE_COAL_ORE:
+    - WOODEN_PICKAXE
+    - STONE_PICKAXE
+    - IRON_PICKAXE
+    - GOLDEN_PICKAXE
+    - DIAMOND_PICKAXE
+    - NETHERITE_PICKAXE
+
+  IRON_ORE:
+    - STONE_PICKAXE
+    - IRON_PICKAXE
+    - GOLDEN_PICKAXE
+    - DIAMOND_PICKAXE
+    - NETHERITE_PICKAXE
+  DEEPSLATE_IRON_ORE:
+    - STONE_PICKAXE
+    - IRON_PICKAXE
+    - GOLDEN_PICKAXE
+    - DIAMOND_PICKAXE
+    - NETHERITE_PICKAXE
+
+  COPPER_ORE:
+    - STONE_PICKAXE
+    - IRON_PICKAXE
+    - GOLDEN_PICKAXE
+    - DIAMOND_PICKAXE
+    - NETHERITE_PICKAXE
+  DEEPSLATE_COPPER_ORE:
+    - STONE_PICKAXE
+    - IRON_PICKAXE
+    - GOLDEN_PICKAXE
+    - DIAMOND_PICKAXE
+    - NETHERITE_PICKAXE
+
+  GOLD_ORE:
+    - IRON_PICKAXE
+    - DIAMOND_PICKAXE
+    - NETHERITE_PICKAXE
+  DEEPSLATE_GOLD_ORE:
+    - IRON_PICKAXE
+    - DIAMOND_PICKAXE
+    - NETHERITE_PICKAXE
+
+  REDSTONE_ORE:
+    - IRON_PICKAXE
+    - DIAMOND_PICKAXE
+    - NETHERITE_PICKAXE
+  DEEPSLATE_REDSTONE_ORE:
+    - IRON_PICKAXE
+    - DIAMOND_PICKAXE
+    - NETHERITE_PICKAXE
+
+  LAPIS_ORE:
+    - STONE_PICKAXE
+    - IRON_PICKAXE
+    - GOLDEN_PICKAXE
+    - DIAMOND_PICKAXE
+    - NETHERITE_PICKAXE
+  DEEPSLATE_LAPIS_ORE:
+    - STONE_PICKAXE
+    - IRON_PICKAXE
+    - GOLDEN_PICKAXE
+    - DIAMOND_PICKAXE
+    - NETHERITE_PICKAXE
+
+  DIAMOND_ORE:
+    - IRON_PICKAXE
+    - DIAMOND_PICKAXE
+    - NETHERITE_PICKAXE
+  DEEPSLATE_DIAMOND_ORE:
+    - IRON_PICKAXE
+    - DIAMOND_PICKAXE
+    - NETHERITE_PICKAXE
+
+  EMERALD_ORE:
+    - IRON_PICKAXE
+    - DIAMOND_PICKAXE
+    - NETHERITE_PICKAXE
+  DEEPSLATE_EMERALD_ORE:
+    - IRON_PICKAXE
+    - DIAMOND_PICKAXE
+    - NETHERITE_PICKAXE
+
+  # ── Nether ores ─────────────────────────────────────────
+  NETHER_GOLD_ORE:
+    - IRON_PICKAXE
+    - GOLDEN_PICKAXE
+    - DIAMOND_PICKAXE
+    - NETHERITE_PICKAXE
+
+  NETHER_QUARTZ_ORE:
+    - WOODEN_PICKAXE
+    - STONE_PICKAXE
+    - IRON_PICKAXE
+    - GOLDEN_PICKAXE
+    - DIAMOND_PICKAXE
+    - NETHERITE_PICKAXE
+
+  ANCIENT_DEBRIS:
+    - DIAMOND_PICKAXE
+    - NETHERITE_PICKAXE

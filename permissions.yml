@@ -1,0 +1,24 @@
+imageframe.create:
+  default: true
+imageframe.create.animated:
+  default: true
+imageframe.overlay:
+  default: true
+imageframe.clone:
+  default: true
+imageframe.playback:
+  default: true
+imageframe.select:
+  default: true
+imageframe.marker:
+  default: true
+imageframe.refresh:
+  default: true
+imageframe.rename:
+  default: true
+imageframe.delete:
+  default: true
+imageframe.get:
+  default: true
+imageframe.setaccess:
+  default: true

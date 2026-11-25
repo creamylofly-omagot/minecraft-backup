@@ -1,0 +1,11 @@
+[Unit]
+Description=Performance tuning for Minecraft host
+After=multi-user.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/bin/minecraft-perf.sh
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,4 @@
+[2026-11-13 15:18:09] started world=minecraft:overworld center-x=0 center-z=0 radius=500 shape=square pattern=ring
+[2026-11-13 15:30:24] completed world=minecraft:overworld center-x=0 center-z=0 radius=500 shape=square pattern=ring chunks=4225 time=0:12:15
+[2026-11-17 11:42:38] started world=minecraft:overworld center-x=0 center-z=0 radius=1000 shape=square pattern=ring
+[2026-11-17 12:01:10] completed world=minecraft:overworld center-x=0 center-z=0 radius=1000 shape=square pattern=ring chunks=16129 time=0:18:31

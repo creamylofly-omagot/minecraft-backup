@@ -1,0 +1,4 @@
+# Shape only. The real /etc/playit/playit.toml contains a private secret and is
+# deliberately not stored in this public repository.
+[agent]
+secret = "REPLACE_WITH_PLAYIT_SECRET"

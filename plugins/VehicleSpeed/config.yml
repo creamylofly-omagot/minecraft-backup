@@ -1,0 +1,14 @@
+# VehicleSpeed configuration
+
+minecart:
+  minimum-speed: 0.1
+  maximum-speed: 2.0
+
+boat:
+  minimum-speed: 0.1
+  maximum-speed: 2.5
+  acceleration: 0.03
+
+horse:
+  minimum-speed: 0.05
+  maximum-speed: 0.5

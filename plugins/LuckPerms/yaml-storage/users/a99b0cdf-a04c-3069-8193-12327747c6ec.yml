@@ -1,0 +1,18 @@
+uuid: a99b0cdf-a04c-3069-8193-12327747c6ec
+name: arkana01
+primary-group: default
+permissions:
+- imageframe.clone
+- imageframe.create
+- imageframe.create.animated
+- imageframe.delete
+- imageframe.get
+- imageframe.marker
+- imageframe.overlay
+- imageframe.playback
+- imageframe.refresh
+- imageframe.rename
+- imageframe.select
+- imageframe.setaccess
+parents:
+- default

@@ -1,0 +1,13 @@
+{
+  "cpuName": "Intel(R) Core(TM) i5 CPU       M 450  @ 2.40GHz",
+  "cpuMicroarchitecture": "Westmere (Client)",
+  "cpuVendorFreq": 2400000000,
+  "logicalCores": 1,
+  "physicalCores": 1,
+  "totalMemory": 5526118400,
+  "pageSize": 4096,
+  "memoryType": "Unknown",
+  "diskCount": 3,
+  "partitionCount": 4,
+  "networkInterfaceCount": 1
+}

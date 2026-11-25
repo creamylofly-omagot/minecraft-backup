@@ -1,0 +1,44 @@
+{
+  "type": "imageframe:url_static",
+  "index": 3,
+  "name": "dapss",
+  "url": "https://files.catbox.moe/j3m71q.jpg",
+  "width": 2,
+  "height": 3,
+  "ditheringType": "nearest-color",
+  "creator": "00000000-0000-0000-0009-01f443ad93ae",
+  "hasAccess": {},
+  "creationTime": 1795485907555,
+  "mapdata": [
+    {
+      "mapid": 58,
+      "image": "0.png",
+      "markers": []
+    },
+    {
+      "mapid": 59,
+      "image": "1.png",
+      "markers": []
+    },
+    {
+      "mapid": 60,
+      "image": "2.png",
+      "markers": []
+    },
+    {
+      "mapid": 61,
+      "image": "3.png",
+      "markers": []
+    },
+    {
+      "mapid": 62,
+      "image": "4.png",
+      "markers": []
+    },
+    {
+      "mapid": 63,
+      "image": "5.png",
+      "markers": []
+    }
+  ]
+}

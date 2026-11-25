@@ -1,0 +1,24 @@
+{
+  "type": "imageframe:url_static",
+  "index": 2,
+  "name": "daps2",
+  "url": "https://files.catbox.moe/j3m71q.jpg",
+  "width": 2,
+  "height": 1,
+  "ditheringType": "nearest-color",
+  "creator": "00000000-0000-0000-0009-01f443ad93ae",
+  "hasAccess": {},
+  "creationTime": 1795484879907,
+  "mapdata": [
+    {
+      "mapid": 56,
+      "image": "0.png",
+      "markers": []
+    },
+    {
+      "mapid": 57,
+      "image": "1.png",
+      "markers": []
+    }
+  ]
+}

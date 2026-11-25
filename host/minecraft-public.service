@@ -1,0 +1,19 @@
+[Unit]
+Description=Minecraft Public (Paper + Geyser Bedrock + ViaBackwards, open server)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=naze
+WorkingDirectory=/home/naze/minecraft-public
+ExecStart=/home/naze/minecraft-public/start.sh
+Restart=always
+RestartSec=15
+Nice=-5
+SuccessExitStatus=0 1
+StandardOutput=append:/home/naze/minecraft-public/logs/service.log
+StandardError=append:/home/naze/minecraft-public/logs/service.log
+
+[Install]
+WantedBy=multi-user.target
