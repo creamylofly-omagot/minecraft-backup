@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Shorten ProbablyBackpacks Geyser attachable paths for wider Bedrock support.
 
-ProbablyBackpacks 2.4 ships Bedrock attachable files under long paths such as
+ProbablyBackpacks 2.4/2.4.1 ships Bedrock attachable files under long paths such as
 `attachables/item/backpack/legacy/netherite/...attachable.json`. Some Bedrock
 clients reject paths of 80+ characters. The attachable identifier is inside the
 JSON, so the filename/path can be shortened without changing mappings.
@@ -22,7 +22,7 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-JAR = ROOT / "plugins" / "ProbablyBackpacks-2.4.jar"
+JAR = ROOT / "plugins" / "ProbablyBackpacks-2.4.1.jar"
 NESTED_PACK_NAME = "ProbablyBackpack_Geyser.zip"
 PACKS = [
     ROOT / "plugins" / "ProbablyBackpacks" / "geyser" / NESTED_PACK_NAME,
