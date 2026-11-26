@@ -117,7 +117,13 @@ def main():
 
     gy = STAGE / "plugins" / "Geyser-Spigot" / "config.yml"
     if gy.exists():
-        gy.write_text(sanitize_geyser_config(gy.read_text(errors="replace")))
+        # The staged plugins tree is hardlinked to the live tree, so never
+        # write through this path. Replace the directory entry with a new
+        # inode instead, leaving the live config (and its token) untouched.
+        sanitized = sanitize_geyser_config(gy.read_text(errors="replace"))
+        tmp = gy.with_name(gy.name + ".sanitized")
+        tmp.write_text(sanitized)
+        tmp.replace(gy)
 
     # sshx_watchdog.py is retired and contains an old Telegram token: excluded.
     # discord-bot/config.json contains the Discord token + RCON password: excluded.
