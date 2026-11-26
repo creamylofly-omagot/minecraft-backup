@@ -77,6 +77,12 @@ def main():
     # Do not publish plugin binaries; they are already in the repo/Releases.
     run(["find", str(STAGE / "plugins"), "-type", "f", "-name", "*.jar", "-delete"])
 
+    # Runtime logs are regenerable and must never enter the public archive.
+    run(["find", str(STAGE / "plugins"), "-type", "d", "-name", "logs", "-prune",
+         "-exec", "rm", "-rf", "{}", "+"])
+    run(["find", str(STAGE / "plugins"), "-type", "f", "(", "-name", "*.log",
+         "-o", "-name", "*.log.gz", ")", "-delete"])
+
     # Private/token-bearing files must never enter the public archive.
     for pattern in (
         "Geyser-Spigot/nethernet",
@@ -91,7 +97,8 @@ def main():
                 p.unlink()
 
     # Small root files needed to restore a working server.
-    for name in ("start.sh", "backup.sh", "github_progress_backup.py", "spigot.yml", "bukkit.yml",
+    for name in ("start.sh", "backup.sh", "github_progress_backup.py",
+                 "shorten_geyser_backpack_paths.py", "spigot.yml", "bukkit.yml",
                  "ops.json", "whitelist.json", "permissions.yml", "eula.txt"):
         src = SRC / name
         if src.exists():

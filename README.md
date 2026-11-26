@@ -1,101 +1,176 @@
-# Minecraft Public Server Backup
+# Minecraft server (public) — nazeultrahighendserer
 
-This repository is a **sanitized backup** of the live public Minecraft server at
-`/home/naze/minecraft-public`, plus the host files that make it start and stay
-online. It is public because the Java resource pack is downloaded directly from
-a GitHub Release asset, so Java players do not need up.sb, Dropbox, or a local
-web server.
+Open, no-whitelist Paper server at `/home/naze/minecraft-public`.
 
-**No real secrets are stored here.** See [`docs/SECRETS.md`](docs/SECRETS.md)
-for every placeholder and how to restore the real values from the live machine.
+Runs as systemd unit **minecraft-public.service** (`User=naze`, `Restart=always`,
+enabled at boot). The older whitelisted server remains at `/home/naze/minecraft`,
+stopped and disabled.
 
-> Docs are a sanitized snapshot plus dated progress updates. The old sshx
-> watchdog is retired; admin SSH now uses Tailscale.
+Stack: Paper **26.2 build 135** (Java 25), Geyser + Floodgate for Bedrock,
+ViaVersion + ViaBackwards for older Java clients, playit tunnels for public
+access. Heap is 2 GiB on a 1-CPU / 5.1 GiB RAM host.
+
+## Backup repository and docs
+
+Public, sanitized backup: <https://github.com/creamylofly-omagot/minecraft-backup>
+
+The repo stays public so Java players can download the required resource pack
+from a GitHub Release. It contains **no real secrets**; see
+[`docs/SECRETS.md`](docs/SECRETS.md) before restoring it anywhere.
+
+Local copies of the repo docs are in [`docs/`](docs/):
+
+- [`docs/FILES.md`](docs/FILES.md) — what every file/folder does
+- [`docs/RUNBOOK.md`](docs/RUNBOOK.md) — start, stop, restart, verify, restore
+- [`docs/SECRETS.md`](docs/SECRETS.md) — placeholders and secret restore list
+- [`docs/HOST_SETUP.md`](docs/HOST_SETUP.md) — systemd, cron, playit, firewall
+- [`docs/RESOURCE_PACKS.md`](docs/RESOURCE_PACKS.md) — pack sources, SHA1, update procedure
+- [`docs/BACKPACKS.md`](docs/BACKPACKS.md) — Java/Bedrock backpack install, pack, usage, rollback
+- [`docs/CHANGELOG.md`](docs/CHANGELOG.md) — dated progress log
+- [`docs/DISASTER_RECOVERY.md`](docs/DISASTER_RECOVERY.md) — restore from GitHub progress release
+
+> Note: the public repo docs are a Nov 25 snapshot plus dated progress updates.
+> sshx is retired; see **Remote admin** below for the current Tailscale setup.
 
 ## Game progress backups
 
-After each local backup (**04:00 and 16:00 UTC**), a sanitized world/config
-snapshot is uploaded to the `progress-latest` GitHub Release. It is the
-disaster-recovery copy if the server folder is lost. See
-[`docs/DISASTER_RECOVERY.md`](docs/DISASTER_RECOVERY.md). Secrets are stripped,
-so restoring it requires putting the real values back from private notes.
-
-## What runs
-
-- Paper **26.2**, Java **25**, 2 GiB heap, 1 CPU / 5.1 GiB RAM
-- Java + Bedrock via Geyser/Floodgate
-- ViaVersion + ViaBackwards for older Java clients
-- Bedrock networking via playit **Minecraft Bedrock (NetherNet)** + Geyser NXS
-- Runs as systemd service `minecraft-public.service`
-- Local backups at 04:00 and 16:00 UTC via `backup.sh`
-- Chest/container audit monitor via tmux + cron
-- sshx retired; admin SSH via Tailscale (userspace service)
-- Discord bot code is kept, but the bot is currently stopped by user request
+After each local backup (**04:00 and 16:00 UTC**), `github_progress_backup.py`
+uploads a sanitized world/config snapshot to the `progress-latest` GitHub
+Release at
+<https://github.com/creamylofly-omagot/minecraft-backup/releases/tag/progress-latest>.
+It is the disaster-recovery copy if this folder disappears. Secrets, tokens,
+identity files, plugin jars, and private Discord config are stripped, so
+restoring requires putting real values back. See
+[`docs/DISASTER_RECOVERY.md`](docs/DISASTER_RECOVERY.md).
 
 ## Join
 
 ### Java
-- Public: `ambulance-exporters.tun.ply.gg:25565`
-- Same Wi-Fi: `192.168.1.9:25565`
+- Public: **ambulance-exporters.tun.ply.gg:25565**
+- Same Wi-Fi: **192.168.1.9:25565**
 
 ### Bedrock
-- Public: `wap-ski.tun.ply.gg:19132`
-- Same Wi-Fi: Geyser is NetherNet-only in this config, so use the public tunnel.
+- Public: **wap-ski.tun.ply.gg:19132**
+- Uses playit **Minecraft Bedrock (NetherNet)** with Geyser NXS signaling.
+  Geyser is NetherNet-only in this config, so LAN RakNet is not currently
+  enabled.
+- If the playit tunnel changes, copy the fresh Geyser settings from the playit
+  tunnel's *Configuration help* into `plugins/Geyser-Spigot/config.yml` and
+  restart the server.
 
-The server is open/no-whitelist and `online-mode=false` because Bedrock/Floodgate
-requires it. Anyone with the address can join. Manage staff powers from
-console/RCON, not by username, because Java names are not authenticated.
+Remote play uses the playit relay (Singapore). The host ISP drops a few percent
+of packets on that route, so remote players may see mild rubber-banding. LAN
+play is unaffected.
+
+## Access control
+
+- Whitelist is **OFF** and `online-mode=false` (required for Bedrock/Floodgate).
+- Java players are **not authenticated by Mojang**. Anyone with the address can
+  join using any name, including one of yours.
+- Do **not** grant staff powers by username. An op set by name can be
+  impersonated. Use console/RCON instead.
+- Bedrock usernames are prefixed with `.` (Floodgate), e.g. `.Gamertag`.
+
+## RCON / console
+
+The real RCON password is in `server.properties` (`rcon.password`). Read it
+locally; do not paste it into this repo or the public backup.
+
+```bash
+PASS="$(grep -m1 '^rcon.password=' server.properties | cut -d= -f2-)"
+python3 /home/naze/rcon.py "$PASS" "tps"
+python3 /home/naze/rcon.py "$PASS" "save-all flush"
+python3 /home/naze/rcon.py "$PASS" "stop"
+```
+
+Useful service commands:
+
+```bash
+systemctl status minecraft-public --no-pager -l
+sudo systemctl restart minecraft-public
+tail -f logs/latest.log
+```
+
+`sudo` may need the user password on this host. Because the unit uses
+`Restart=always`, `save-all flush` followed by `stop` is a clean restart path.
 
 ## Resource packs
 
-- Java: required merged ZIP hosted on GitHub Release:
-  `https://github.com/creamylofly-omagot/minecraft-backup/releases/download/v1.0.4/Human-Era-Vanilla-Glowing-Ores.zip`
-  SHA1: `216575f6c190838ec7adc1003fdfa7f0df0b26e6`
-- Bedrock: two forced `.mcpack` files in `plugins/Geyser-Spigot/packs/`:
-  `Human-Era-Villagers-Illagers-Bedrock.mcpack` (repacked as v0.0.4 with short
-  internal paths and fixed texture references) and
-  `Better-Glowing-Ores-v2.4.0-RealLight.mcpack`
-- Bedrock ore glow uses Geyser custom mappings in
-  `plugins/Geyser-Spigot/custom_mappings/human_era_glowing_ores.json`. It works
-  on Simple/Fancy by emitting real block light; it is not a texture-only glow.
-- Full details: [`docs/RESOURCE_PACKS.md`](docs/RESOURCE_PACKS.md)
+- Java: one required merged ZIP, hosted on GitHub Release **curiospaper-backpacks-pack**:
+  `https://github.com/creamylofly-omagot/minecraft-backup/releases/download/curiospaper-backpacks-pack/human-era-backpacks-v1.zip`
+  SHA1 `7251fd2fe34a62daf1033a43204eac885ad96f28`.
+  Local source: `resource-packs/Human-Era-Backpacks-v1.zip`.
+  It includes the old Human-Era + glowing-ore content plus backpack models.
+- Bedrock: Geyser force-sends `Human-Era-Villagers-Illagers-Bedrock.mcpack`
+  (repacked as v0.0.4 with short paths) and
+  `Better-Glowing-Ores-v2.4.0-RealLight.mcpack`.
+- Bedrock ore glow uses `plugins/Geyser-Spigot/custom_mappings/human_era_glowing_ores.json`
+  to emit **real block light**, so it works on low-end phones with Simple/Fancy
+  graphics and does not require Vibrant Visuals.
+- Full sources, hashes, and update steps: [`docs/RESOURCE_PACKS.md`](docs/RESOURCE_PACKS.md).
 
-## Documentation
+## ImageFrame (maps)
 
-- [`docs/FILES.md`](docs/FILES.md) — what every file/folder does
-- [`docs/RUNBOOK.md`](docs/RUNBOOK.md) — start, stop, restart, verify, restore, backup
-- [`docs/SECRETS.md`](docs/SECRETS.md) — placeholders and secret restore list
-- [`docs/HOST_SETUP.md`](docs/HOST_SETUP.md) — systemd, cron, playit, firewall/perf scripts
-- [`docs/RESOURCE_PACKS.md`](docs/RESOURCE_PACKS.md) — pack sources, SHA1, update procedure
+`plugins/ImageFrame/config.yml` has:
 
-## Performance guardrails
+```yaml
+RequireEmptyMaps: false
+```
 
-Do **not** lower these values further on this box:
+Players **do not need blank maps** to use `/iframe create <url>`; the
+`default` LuckPerms group already has the ImageFrame create/get/refresh
+permissions. Original config is saved as `plugins/ImageFrame/config.yml.bak`.
+Apply future config edits with `/imageframe reload` via RCON.
 
-- `view-distance=4`
-- `simulation-distance=3`
-- `entity-broadcast-range-percentage=60`
+## Backpacks (Java + Bedrock)
 
-The server runs on one CPU core and a 5400 rpm HDD. `start.sh` warms the page
-cache before launching Paper. Host tuning is in `host/minecraft-perf.sh`.
+CuriosPaper **2.0.1** + ProbablyBackpacks **2.4** are installed. All players have
+`probablybackpacks.use`; `/bp` opens the backpack, `/baubles` opens the accessory
+slots. The Java resource pack above includes the item models, and Geyser copies
+the Bedrock packs/mappings automatically. Full details, checksums, hotkey,
+recipes, and rollback are in [`docs/BACKPACKS.md`](docs/BACKPACKS.md).
 
-## Nightly backup
+## Remote admin (Tailscale / sshx)
 
-`backup.sh` saves `world`, `config`, `plugins`, `server.properties`, `spigot.yml`,
-`bukkit.yml`, `ops.json`, and `whitelist.json` to
-`/home/naze/backups/minecraft-public/` and keeps 7 archives.
+- **Tailscale is the current admin path.** `tailscaled.service` runs in
+  userspace mode (no root needed), enabled at boot.
+  - Hostname: `nazeultrahighendserer`
+  - MagicDNS: `nazeultrahighendserer.taile12673.ts.net`
+  - Tailscale IP: `100.90.150.113`
+  - Connect with `ssh naze@nazeultrahighendserer`
+- **sshx is retired.** The watchdog was stopped and its `@reboot` cron entry
+  removed. `sshx_watchdog.py` is still on disk but nothing starts it. No more
+  rotating/expiring links.
 
+## Ops scripts and performance
 
-## Progress update — 2026-11-26
+- `check_inventory.py`: inventory reports. `analyze_player` is enabled as a
+  Rust port through `fast-anything` (~4.3× per call); check with
+  `fast-anything status`.
+- `chest_audit_monitor.py`: runs via tmux `chest-audit` from cron, watches
+  CoreProtect container events.
+- `backup.sh`: 04:00 and 16:00 UTC archives to
+  `/home/naze/backups/minecraft-public/` (7 archives kept).
+- Tuned for the 1-core/5400 rpm HDD host: `view-distance=4`,
+  `simulation-distance=3`, `entity-broadcast-range-percentage=60`,
+  tightened entity ranges in `spigot.yml`, spawn limits in `bukkit.yml`, and
+  page-cache warmup in `start.sh`. See [`docs/HOST_SETUP.md`](docs/HOST_SETUP.md)
+  and the `opt-backup/` folder for originals.
+- TPS was 20/20/20 after tuning. The remaining ceiling is hardware (1 CPU,
+  HDD) and playit relay latency, not Paper version. Paper 26.3 was tested and
+  rolled back because public CoreProtect v24.1 does not support it.
 
-- Added a second daily local backup at **16:00 UTC**; the existing 04:00 UTC
-  backup is kept. Both write to `/home/naze/backups/minecraft-public/`.
-- Admin SSH moved to **Tailscale**. The rotating sshx watchdog and its
-  `@reboot` cron entry were retired; no more expiring links.
-- ImageFrame now has `RequireEmptyMaps: false`, so players can create image
-  maps without carrying blank maps.
-- Docs refreshed for the current server state; see `docs/CHANGELOG.md`.
-- The public repo remains sanitized: no real passwords, tokens, or identity
-  files are included.
+## Gamerules are per-dimension
 
-Date applied: **2026-11-26 (UTC)**.
+Gamerules (including `keep_inventory`) are stored separately for the Overworld,
+Nether and End. To set one everywhere, run it in all three dimensions:
+
+```bash
+PASS="$(grep -m1 '^rcon.password=' server.properties | cut -d= -f2-)"
+python3 /home/naze/rcon.py "$PASS" "execute in minecraft:overworld run gamerule keep_inventory true"
+python3 /home/naze/rcon.py "$PASS" "execute in minecraft:the_nether run gamerule keep_inventory true"
+python3 /home/naze/rcon.py "$PASS" "execute in minecraft:the_end run gamerule keep_inventory true"
+```
+
+Settings live in each world's `data/minecraft/game_rules.dat`; run `save-all`
+to flush immediately.

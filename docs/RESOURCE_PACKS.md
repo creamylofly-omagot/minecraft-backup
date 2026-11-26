@@ -8,34 +8,41 @@ formats.
 The Java pack is one required merged ZIP:
 
 ```text
-Human Era Villagers & Illagers + Vanilla Glowing Ores
+Human Era Villagers & Illagers + Vanilla Glowing Ores + Backpacks
 ```
 
 Public download URL:
 
 ```text
-https://github.com/creamylofly-omagot/minecraft-backup/releases/download/v1.0.4/Human-Era-Vanilla-Glowing-Ores.zip
+https://github.com/creamylofly-omagot/minecraft-backup/releases/download/curiospaper-backpacks-pack/human-era-backpacks-v1.zip
 ```
 
 SHA1:
 
 ```text
-216575f6c190838ec7adc1003fdfa7f0df0b26e6
+7251fd2fe34a62daf1033a43204eac885ad96f28
 ```
 
 Local source copy in this repo:
 
 ```text
-resource-packs/Human-Era-Vanilla-Glowing-Ores.zip
+resource-packs/Human-Era-Backpacks-v1.zip
 ```
 
 `server.properties` must contain:
 
 ```properties
 require-resource-pack=true
-resource-pack=https\://github.com/creamylofly-omagot/minecraft-backup/releases/download/v1.0.4/Human-Era-Vanilla-Glowing-Ores.zip
-resource-pack-sha1=216575f6c190838ec7adc1003fdfa7f0df0b26e6
-resource-pack-prompt={"text":"Human Era Villagers & Illagers + Vanilla Glowing Ores resource pack is required."}
+resource-pack=https\://github.com/creamylofly-omagot/minecraft-backup/releases/download/curiospaper-backpacks-pack/human-era-backpacks-v1.zip
+resource-pack-sha1=7251fd2fe34a62daf1033a43204eac885ad96f28
+resource-pack-prompt={"text":"Human Era + Backpacks resource pack is required."}
+```
+
+Previous pack (kept for rollback, but has no backpack models):
+
+```text
+https://github.com/creamylofly-omagot/minecraft-backup/releases/download/v1.0.4/Human-Era-Vanilla-Glowing-Ores.zip
+SHA1 216575f6c190838ec7adc1003fdfa7f0df0b26e6
 ```
 
 The repository must stay **public**. Private GitHub Release assets require
@@ -50,17 +57,22 @@ them.
 - Vanilla Glowing Ores 0.2
   - Modrinth project `ZddTMHhl`
   - Version ID `LFfH5Trc`
+- CuriosPaper 2.0.1 item resources
+  - Modrinth project `JLMPHrRw`, version `dmu88Qpk`
+- ProbablyBackpacks 2.4 item models
+  - Modrinth project `d4Eqdm1Q`, version `WVHDU3vW`
 
 The ZIP was rebuilt with all Human Era files preserved, its overlay entries
-preserved, glowing ore models/textures added, and the pack description changed.
+preserved, glowing ore models/textures added, backpack/curios item models added,
+and the pack description changed.
 No OptiFine/Continuity/Fusion is required.
 
 ### How to update the Java pack
 
-1. Replace or rebuild `resource-packs/Human-Era-Vanilla-Glowing-Ores.zip`.
+1. Replace or rebuild `resource-packs/Human-Era-Backpacks-v1.zip`.
 2. Compute SHA1:
    ```bash
-   sha1sum resource-packs/Human-Era-Vanilla-Glowing-Ores.zip
+   sha1sum resource-packs/Human-Era-Backpacks-v1.zip
    ```
 3. Upload the new ZIP as a GitHub Release asset. Prefer a new tag/version so
    the URL stays stable for existing clients.
@@ -105,6 +117,15 @@ Files:
   - The manifest was bumped to version `2.4.0` so Bedrock clients fetch the new
     pack after the renderer change.
   - Longest internal path is 65 chars.
+
+Backpack packs are added automatically by the plugins, not copied manually:
+
+- `ProbablyBackpack_Geyser.zip` + `ProbablyBackpacks_mappings.json`
+- `CuriosPaper_Geyser.zip` + `CuriosPaper_mappings.json`
+
+`shorten_geyser_backpack_paths.py` keeps the ProbablyBackpacks attachable paths
+under 80 characters. Re-run it after replacing/updating the ProbablyBackpacks
+jar, then restart. See [`BACKPACKS.md`](BACKPACKS.md).
 
 ### Geyser custom block mappings
 

@@ -57,7 +57,8 @@ Excluded from the public copy: real Geyser NXS token backups, Geyser
 
 | Path | Purpose |
 |---|---|
-| `resource-packs/Human-Era-Vanilla-Glowing-Ores.zip` | Local source copy of the merged Java pack. Players download it from the GitHub Release URL. |
+| `resource-packs/Human-Era-Backpacks-v1.zip` | Current Java pack: Human Era + glowing ores + backpack/curios item models. |
+| `resource-packs/Human-Era-Vanilla-Glowing-Ores.zip` | Previous Java pack, kept for rollback; no backpack models. |
 | `plugins/Geyser-Spigot/packs/Human-Era-Villagers-Illagers-Bedrock.mcpack` | Bedrock Human Era pack. |
 | `plugins/Geyser-Spigot/packs/Better-Glowing-Ores-v2.4.0-RealLight.mcpack` | Bedrock glowing ore textures. The dark glow comes from the Geyser custom block mapping below. |
 | `plugins/Geyser-Spigot/custom_mappings/human_era_glowing_ores.json` | Registers vanilla ore block states as Bedrock custom blocks with real `light_emission` so they glow on Simple/Fancy. |
@@ -69,7 +70,9 @@ Excluded from the public copy: real Geyser NXS token backups, Geyser
 | `check_inventory.py` | Reads player/container NBT and reports inventories to Telegram. |
 | `chest_audit_monitor.py` | Watches CoreProtect for chest/container opens and item take/put events. |
 | `sshx_watchdog.py` | Retired/unused. Formerly kept an sshx session up and sent rotating links to Telegram; replaced by Tailscale. |
-| `backup.sh` | Nightly local archive script. |
+| `backup.sh` | Local archive script, run at 04:00 and 16:00 UTC. |
+| `github_progress_backup.py` | Uploads a sanitized game-progress snapshot to the `progress-latest` GitHub Release after each backup. |
+| `shorten_geyser_backpack_paths.py` | Patches ProbablyBackpacks Geyser attachable paths to stay under 80 characters for Bedrock. |
 | `tools/rcon.py` | Small RCON client used by commands and scripts. |
 | `tools/shorten_he_pack.py` | Rebuilds the Human Era Bedrock mcpack with shorter internal paths and bumped pack version. |
 | `discord-bot/` | Discord bot code. Currently stopped. `config.json` excluded; `config.example.json` is sanitized. |
@@ -82,7 +85,7 @@ Excluded from the public copy: real Geyser NXS token backups, Geyser
 | `host/minecraft-perf.service` | systemd unit that runs host tuning at boot. |
 | `host/minecraft-perf.sh` | CPU governor, sysctl, disk scheduler, RCON/Java firewall rules. |
 | `host/playit.service` | playit agent service. |
-| `host/crontab-naze.txt` | 04:00 + 16:00 backups and chest audit autostart; sshx watchdog removed. |
+| `host/crontab-naze.txt` | 04:00/16:00 UTC backup + progress upload, and chest audit autostart (sshx watchdog removed). |
 | `host/playit.toml.example` | Example playit secret file. Real file is `/etc/playit/playit.toml` and is not backed up here. |
 
 ## Excluded regenerable/temporary paths
