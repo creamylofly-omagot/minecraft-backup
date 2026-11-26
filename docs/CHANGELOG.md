@@ -16,3 +16,6 @@
   Geyser mappings, TPS 20.1, and a fresh post-install backup.
 - Hardened the progress sanitizer to exclude plugin logs and include
   `shorten_geyser_backpack_paths.py` in the recovery snapshot.
+- Fixed a sanitizer bug that rewrote the live Geyser config through a hardlink
+  and blanked its private NXS token. Bedrock registration is restored at
+  `wap-ski.tun.ply.gg:19132`.
