@@ -8,16 +8,23 @@ attachables.
 
 - **CuriosPaper 2.0.1** — Modrinth project `JLMPHrRw`, version `dmu88Qpk`
   - Original SHA256: `6fbe1dd5181f49744b84434a193c9d4d6b82d7c8478ea9c91a6ab4b7abe48e51`
-- **ProbablyBackpacks 2.4** — Modrinth project `d4Eqdm1Q`, version `WVHDU3vW`
-  - Original SHA256: `69abf3adb4aae4d66254b14b2dd61936e3afa9f0408e0b9f4dae81231dd0b253`
+- **ProbablyBackpacks 2.4.1** — Modrinth project `d4Eqdm1Q`, version `g9qnB7xR`
+  - Original SHA256: `f995681964979d6ad8364d9f28c07238b8e27bb8`
+  - Local patched jar SHA256: `8e7983879f1587d9097d06b2c4b194e8ee3d84d152bb8767bf4fb33e6643b763`
+- **ProbablyBackpacks 2.4** (replaced) — Modrinth version `WVHDU3vW`
   - Local patched jar SHA256: `56aed1b7c2e52e4a84342717dd0d7c6d735b893a383d58a50c390c94d280ddfd`
 
 Version 2.4 was chosen instead of 2.5 because 2.4 documents support for Paper
 26.2 and explicit Geyser compatibility. Version 2.5 expects CuriosPaper 3.0 /
-Synthetix, which was not confirmed for this server.
+Synthetix, which was not confirmed for this server. On 2026-11-26, 2.4 was found
+to deserialize Bukkit `Wrapper` map objects as `ItemStack`s, causing every
+backpack item to be dropped on load. 2.4.1 keeps the same Paper 26.2 /
+CuriosPaper 2.0.1 compatibility but only unwraps actual `Wrapper` objects, fixing
+that data-loss bug.
 
 Pre-install backup: `/home/naze/backups/minecraft-public/minecraft-public-20261126-132438.tar.gz`  
-Post-install backup: `/home/naze/backups/minecraft-public/minecraft-public-20261126-133927.tar.gz`
+Post-install backup: `/home/naze/backups/minecraft-public/minecraft-public-20261126-133927.tar.gz`  
+Pre-2.4.1-fix backup: `/home/naze/backups/minecraft-public/minecraft-public-20261126-152114.tar.gz`
 
 ## Player usage
 
@@ -85,12 +92,12 @@ On startup the plugins copy these into Geyser:
 - `plugins/Geyser-Spigot/custom_mappings/ProbablyBackpacks_mappings.json`
 - `plugins/Geyser-Spigot/custom_mappings/CuriosPaper_mappings.json`
 
-ProbablyBackpacks 2.4 ships 129 attachable paths longer than 80 characters,
+ProbablyBackpacks 2.4/2.4.1 ships attachable paths longer than 80 characters,
 which some Bedrock clients reject. `shorten_geyser_backpack_paths.py` renamed
 them to short, unique paths. Because the plugin regenerates its pack from its
 jar on every start, the script patched:
 
-1. the embedded `ProbablyBackpack_Geyser.zip` inside `plugins/ProbablyBackpacks-2.4.jar`;
+1. the embedded `ProbablyBackpack_Geyser.zip` inside `plugins/ProbablyBackpacks-2.4.1.jar`;
 2. `plugins/ProbablyBackpacks/geyser/ProbablyBackpack_Geyser.zip`;
 3. `plugins/Geyser-Spigot/packs/ProbablyBackpack_Geyser.zip`.
 
@@ -98,13 +105,17 @@ Originals are kept as `*.longpaths.bak`. **After replacing or updating the
 ProbablyBackpacks jar, run `python3 shorten_geyser_backpack_paths.py` and restart
 once more.** The current startup has zero long-path warnings.
 
-## Verification (2026-11-26 13:37 UTC)
+## Verification (2026-11-26 15:25 UTC)
 
-- `CuriosPaper 2.0.1` and `ProbablyBackpacks 2.4` enabled cleanly.
+- `CuriosPaper 2.0.1` and `ProbablyBackpacks 2.4.1` enabled cleanly.
 - CuriosPaper loaded 9 slots and registered 25 recipes.
 - Geyser loaded 131 ProbablyBackpacks mappings and 15 CuriosPaper mappings.
 - Java pack download SHA1 matched the configured SHA1.
 - Geyser Bedrock long-path warnings: 0.
+- No `Failed to deserialize item at index` warnings after the 2.4.1 restart.
+- Recovered the last readable gold-backpack snapshot from the CuriosPaper SQLite
+  WAL (`minecraft:wheat` 64+64+8 and `minecraft:wheat_seeds` 64×4) into
+  `probably_backpacks.inventory` before restarting.
 - TPS: `20.1 / 20.1 / 20.1`; `minecraft-public`, `playit`, `minecraft-perf` active.
 
 ## Rollback
@@ -118,7 +129,7 @@ python3 /home/naze/rcon.py "$PASS" "stop"
 ```
 
 For a plugin-only rollback, remove `plugins/CuriosPaper-2.0.1.jar` and
-`plugins/ProbablyBackpacks-2.4.jar`, restore the v1.0.4 `resource-pack` URL and
+`plugins/ProbablyBackpacks-2.4.1.jar`, restore the v1.0.4 `resource-pack` URL and
 SHA1 in `server.properties` (see `docs/RESOURCE_PACKS.md` history), then let
 systemd restart the service. For a full rollback, restore the pre-install backup
 above.
