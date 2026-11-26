@@ -9,6 +9,17 @@ web server.
 **No real secrets are stored here.** See [`docs/SECRETS.md`](docs/SECRETS.md)
 for every placeholder and how to restore the real values from the live machine.
 
+> Docs are a sanitized snapshot plus dated progress updates. The old sshx
+> watchdog is retired; admin SSH now uses Tailscale.
+
+## Game progress backups
+
+After each local backup (**04:00 and 16:00 UTC**), a sanitized world/config
+snapshot is uploaded to the `progress-latest` GitHub Release. It is the
+disaster-recovery copy if the server folder is lost. See
+[`docs/DISASTER_RECOVERY.md`](docs/DISASTER_RECOVERY.md). Secrets are stripped,
+so restoring it requires putting the real values back from private notes.
+
 ## What runs
 
 - Paper **26.2**, Java **25**, 2 GiB heap, 1 CPU / 5.1 GiB RAM
@@ -16,9 +27,9 @@ for every placeholder and how to restore the real values from the live machine.
 - ViaVersion + ViaBackwards for older Java clients
 - Bedrock networking via playit **Minecraft Bedrock (NetherNet)** + Geyser NXS
 - Runs as systemd service `minecraft-public.service`
-- Nightly local backup at 04:00 via `backup.sh`
+- Local backups at 04:00 and 16:00 UTC via `backup.sh`
 - Chest/container audit monitor via tmux + cron
-- sshx watchdog via cron
+- sshx retired; admin SSH via Tailscale (userspace service)
 - Discord bot code is kept, but the bot is currently stopped by user request
 
 ## Join

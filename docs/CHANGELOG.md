@@ -7,3 +7,5 @@
   uses Tailscale.
 - Set ImageFrame `RequireEmptyMaps: false` so players do not need blank maps.
 - Refreshed README/docs and confirmed the public repo contains no live secrets.
+- Added automatic sanitized game-progress snapshots to the `progress-latest`
+  GitHub Release after each 04:00/16:00 UTC local backup, plus restore docs.
