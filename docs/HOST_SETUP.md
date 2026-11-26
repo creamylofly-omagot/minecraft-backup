@@ -66,11 +66,16 @@ Install `host/crontab-naze.txt` with:
 crontab -u naze host/crontab-naze.txt
 ```
 
-Entries:
+Entries (all UTC):
 
-- 04:00 nightly `backup.sh`
+- 04:00 daily `backup.sh`
+- 16:00 daily `backup.sh` (added 2026-11-26)
 - `@reboot` chest-audit tmux session
-- `@reboot` sshx watchdog
+
+The old `@reboot` sshx watchdog line was removed. Admin SSH now uses Tailscale
+(userspace `tailscaled.service`, enabled at boot). Connect with
+`ssh naze@<this-host>` using the MagicDNS name shown by `tailscale status`.
+sshx is retired and should not be re-enabled.
 
 ## playit / Geyser networking
 

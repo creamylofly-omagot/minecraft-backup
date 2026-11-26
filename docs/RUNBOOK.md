@@ -65,13 +65,16 @@ Expected SHA1:
 The public URL must stay public. If the repo is made private, Java players will
 not be able to download the pack.
 
-## Nightly local backup
+## Local backups
 
-Cron entry:
+Cron entries (UTC):
 
 ```text
 0 4 * * * /home/naze/minecraft-public/backup.sh >> /home/naze/minecraft-public/logs/backup.log 2>&1
+0 16 * * * /home/naze/minecraft-public/backup.sh >> /home/naze/minecraft-public/logs/backup.log 2>&1
 ```
+
+The 16:00 entry was added on 2026-11-26; the original 04:00 backup is kept.
 
 Archives go to:
 

@@ -68,7 +68,7 @@ Excluded from the public copy: real Geyser NXS token backups, Geyser
 |---|---|
 | `check_inventory.py` | Reads player/container NBT and reports inventories to Telegram. |
 | `chest_audit_monitor.py` | Watches CoreProtect for chest/container opens and item take/put events. |
-| `sshx_watchdog.py` | Keeps an sshx session up and sends the link to Telegram. |
+| `sshx_watchdog.py` | Retired/unused. Formerly kept an sshx session up and sent rotating links to Telegram; replaced by Tailscale. |
 | `backup.sh` | Nightly local archive script. |
 | `tools/rcon.py` | Small RCON client used by commands and scripts. |
 | `tools/shorten_he_pack.py` | Rebuilds the Human Era Bedrock mcpack with shorter internal paths and bumped pack version. |
@@ -82,7 +82,7 @@ Excluded from the public copy: real Geyser NXS token backups, Geyser
 | `host/minecraft-perf.service` | systemd unit that runs host tuning at boot. |
 | `host/minecraft-perf.sh` | CPU governor, sysctl, disk scheduler, RCON/Java firewall rules. |
 | `host/playit.service` | playit agent service. |
-| `host/crontab-naze.txt` | Nightly backup, chest audit autostart, sshx watchdog autostart. |
+| `host/crontab-naze.txt` | 04:00 + 16:00 backups and chest audit autostart; sshx watchdog removed. |
 | `host/playit.toml.example` | Example playit secret file. Real file is `/etc/playit/playit.toml` and is not backed up here. |
 
 ## Excluded regenerable/temporary paths

@@ -21,6 +21,10 @@ Minecraft client. Real secrets are **not** included. The live server at
 | `plugins/Geyser-Spigot/nethernet/identity.pem` | Excluded private identity |
 | `host/playit.toml.example` | Placeholder only; real `/etc/playit/playit.toml` excluded |
 
+`sshx_watchdog.py` is retired and unused; its Telegram token/chat ID rows are
+kept only to document how the old public snapshot was sanitized. Admin access
+now uses Tailscale.
+
 ## Environment variables used by scripts
 
 Create a private file on the live machine, outside this repo, for example:

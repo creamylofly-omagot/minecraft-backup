@@ -73,3 +73,18 @@ cache before launching Paper. Host tuning is in `host/minecraft-perf.sh`.
 `backup.sh` saves `world`, `config`, `plugins`, `server.properties`, `spigot.yml`,
 `bukkit.yml`, `ops.json`, and `whitelist.json` to
 `/home/naze/backups/minecraft-public/` and keeps 7 archives.
+
+
+## Progress update — 2026-11-26
+
+- Added a second daily local backup at **16:00 UTC**; the existing 04:00 UTC
+  backup is kept. Both write to `/home/naze/backups/minecraft-public/`.
+- Admin SSH moved to **Tailscale**. The rotating sshx watchdog and its
+  `@reboot` cron entry were retired; no more expiring links.
+- ImageFrame now has `RequireEmptyMaps: false`, so players can create image
+  maps without carrying blank maps.
+- Docs refreshed for the current server state; see `docs/CHANGELOG.md`.
+- The public repo remains sanitized: no real passwords, tokens, or identity
+  files are included.
+
+Date applied: **2026-11-26 (UTC)**.
